@@ -7,7 +7,7 @@ sudo echo 'eval "$(pyenv init -)"' >> $HOME/.bash_profile
 sudo echo 'eval "$(pyenv virtualenv-init -)"' >> $HOME/.bash_profile
 source $HOME/.bash_profile
 pyenv install 2.7.14
-pyenv global 3.7.14
+pyenv global 2.7.14
 pyenv virtualenv 1st
 pyenv deactivate
 pyenv install 3.5.4
