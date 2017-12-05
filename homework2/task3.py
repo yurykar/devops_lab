@@ -1,18 +1,23 @@
 N = int(input("number to check: "))
-def number(N):
-    if 0 <= N <= 10**9:
-        Q = -1
+
+
+def number(num):
+    if 0 <= num <= 10**9:
+        out = -1
         for i in range(10**9):
-            f = [x for x in str(i)]
-            d=1
-            for y in range(len(f)):
-                d *= int(f[y])
-            if d == N:
-                Q = i
+            fol = list(str(i))
+            com = 1
+            for y in fol:
+                if y != 0:
+                    com *= int(y)
+            if com == num:
+                out = i
                 break
 
     else:
-        Q = -1
-    return Q
+        out = -1
+    return out
+
 
 print(number(N))
+
