@@ -21,7 +21,7 @@ class Monitoring:
         if out_type == "json":
             output = {"SNAPSHOT {0} : TIMESTAMP: {2}:{1} {3}.{4}.{5} ".format(getattr(self, 'snap_number'), date.minute,
                                                                               date.hour, date.day,
-                                                                              date.month, date.year): {
+                                                                              date.month, date.year): [{
                 'Overall CPU load': getattr(self, 'cpu_load'),
                 'Overall memory usage': getattr(self, 'mem_usage'),
                 'Overall virtual memory usage': getattr(self, 'vir_mem_usage'),
@@ -31,9 +31,10 @@ class Monitoring:
                 'Network information': [{'Bytes receive': getattr(self, 'net_info_byte_rec'),
                                         'Bytes sent': getattr(self, 'net_info_byte_sent')}],
 
-            }}
+                }]
+            }
             with open("result.json", "a") as data:
                 data.write(json.dumps(output))
                 data.write('\n')
                 data.close()
-            return str(getattr(self, 'snap_number')+1)
+            return str(int(getattr(self, 'snap_number'))+1)
