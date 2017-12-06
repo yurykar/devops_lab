@@ -1,13 +1,10 @@
+# pylint: disable=invalid-name
 """import different modules"""
-import configparser
-import psutil
-import datetime
 import time
+import datetime
+import psutil
 from Monitor import Monitoring
 from Init import Initial
-
-CONFIG = configparser.ConfigParser()
-CONFIG.read('conf.ini')
 
 GET_DATE = datetime.datetime.now()
 

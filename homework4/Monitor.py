@@ -2,7 +2,7 @@ import json
 
 
 class Monitoring:
-    """Class to collect init information"""
+    """Class to collect system information"""
 
     def __init__(self, cpu_load, mem_usage, vir_mem_usage, io_info_disk_usage, io_info_read_count,
                  io_info_write_count, net_info_byte_rec, net_info_byte_sent, snap_number):
