@@ -1,10 +1,8 @@
 import requests
 import getpass
 import argparse
-import json
 import datetime
 import calendar
-
 
 
 parser = argparse.ArgumentParser(prog='pr-stats', description='Cool program! Help to get info about pull requests!')
@@ -25,12 +23,12 @@ user = args.user
 repo = args.repo
 
 
-def cr_url(user_f, repo_f, pl_num_f):
-    if pl_num_f:
-        url_f_s = 'https://api.github.com/repos/' + user_f + '/' + repo_f + '/pulls/'+str(pl_num_f)
+def cr_url(*elements):
+    if len(elements) == 3:
+        url_f_s = 'https://api.github.com/repos/' + elements[0] + '/' + elements[1] + '/pulls/'+str(elements[2])
         return url_f_s
     else:
-        url_f_s = 'https://api.github.com/repos/' + user_f + '/' + repo_f + '/pulls?state=all'
+        url_f_s = 'https://api.github.com/repos/' + elements[0] + '/' + elements[1] + '/pulls?state=all'
         return url_f_s
 
 
@@ -133,41 +131,41 @@ def w_opened(pl_num_f):
 
 
 if args.rate:
-    url_f = cr_url(user, repo, False)
+    url_f = cr_url(user, repo)
     result_s = json_file(url_f)
     rate(result_s)
 elif args.days_opened:
-    url_f = cr_url(user, repo, False)
+    url_f = cr_url(user, repo)
     result_s = json_file(url_f)
     pl_num = read(result_s)
     days(pl_num)
 elif args.comments:
-    url_f = cr_url(user, repo, False)
+    url_f = cr_url(user, repo)
     result_s = json_file(url_f)
     pl_num = read(result_s)
     comments(pl_num)
 elif args.d_w_opened:
-    url_f = cr_url(user, repo, False)
+    url_f = cr_url(user, repo)
     result_s = json_file(url_f)
     pl_num = read(result_s)
     d_w_opened(pl_num)
 elif args.d_w_closed:
-    url_f = cr_url(user, repo, False)
+    url_f = cr_url(user, repo)
     result_s = json_file(url_f)
     pl_num = read(result_s)
     d_w_closed(pl_num)
 elif args.l_added:
-    url_f = cr_url(user, repo, False)
+    url_f = cr_url(user, repo)
     result_s = json_file(url_f)
     pl_num = read(result_s)
     l_added(pl_num)
 elif args.l_deleted:
-    url_f = cr_url(user, repo, False)
+    url_f = cr_url(user, repo)
     result_s = json_file(url_f)
     pl_num = read(result_s)
     l_deleted(pl_num)
 elif args.w_opened:
-    url_f = cr_url(user, repo, False)
+    url_f = cr_url(user, repo)
     result_s = json_file(url_f)
     pl_num = read(result_s)
     w_opened(pl_num)
